@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost and Found Community</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Add custom CSS styles -->
+    <style>
+        body {
+            background-color: lavender;
+            padding: 20px;
+        }
+
+        h1 {
+            color: indigo;
+        }
+
+        h2 {
+            color: darkblue;
+            margin-top: 30px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Button 3D Effects */
+        .btn-3d {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            perspective: 1000px;
+        }
+
+        .btn-3d::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform-origin: right;
+            transform: rotateY(-90deg);
+            transition: all 0.3s ease;
+        }
+
+        .btn-3d:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-3d:hover::before {
+            left: 0;
+            transform: rotateY(0deg);
+        }
+
+        .top-right-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .top-right-buttons a {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 8px 12px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .top-right-buttons a:hover {
+            background-color: #555;
+        }
+        /* Flash Messages */
+.flash-messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.flash-message {
+    /* Your flash message styles here */
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    animation: pop 0.3s ease-in-out;
+}
+
+.flash-message.success {
+    /* Your success message styles here */
+    background-color: #28a745;
+    color: #fff;
+}
+
+.flash-message.error {
+    /* Your error message styles here */
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Animation Keyframes */
+@keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Display flash messages one after another
+            var messages = $('.flash-message');
+            var index = 0;
+
+            function displayNextMessage() {
+                if (index < messages.length) {
+                    var message = $(messages[index]);
+                    message.delay(500).fadeOut('slow', function() {
+                        message.remove();
+                    });
+                    index++;
+                }
+            }
+
+            displayNextMessage();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Post an Item</h1>
+        <form action="{{ url_for('post_item') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="item_type">Item Type (Lost or Found):</label>
+                <input type="text" class="form-control" name="item_type" id="item_type" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" name="description" id="description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" name="location" id="location" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact_number">Contact Number:</label>
+                <input type="text" class="form-control" name="contact_number" id="contact_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Images:</label>
+                <input type="file" class="form-control-file" name="images[]" id="images" accept="image/*" required multiple>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-3d">Post Item</button>
+        </form>
+
+        <h2>Search Items by Location</h2>
+        <form action="{{ url_for('search_items') }}" method="GET">
+            <div class="form-group">
+                <label for="location">Location:</label>
+                
+                <input type="text" class="form-control" name="location" id="location" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-3d">Search</button>
+        </form>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message {% if category == 'success' %}success{% elif category == 'error' %}error{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="top-right-buttons">
+        <a href="{{ url_for('chatbox') }}" class="chatbox-button">Chatbox</a>
+        <a href="{{ url_for('courier') }}" class="courier-button">Courier</a>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

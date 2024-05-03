@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost&amp;found - Courier</title>
+    <style>
+        body {
+            background-color: lavender;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: indigo;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .top-right-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .top-right-buttons a {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 8px 12px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .top-right-buttons a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .courier-form {
+            margin-top: 20px;
+        }
+
+        .courier-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .courier-form input[type="text"],
+        .courier-form input[type="email"],
+        .courier-form textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .courier-form select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .courier-form button {
+            padding: 8px 16px;
+            background-color: indigo;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            padding: 10px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-right-buttons">
+        <a href="/">Logout</a>
+    </div>
+
+    <h1 class="display-4">Courier Service</h1>
+
+    <div class="content">
+        <h2>Courier the Found Product</h2>
+        <p>Please fill in the details below to arrange the courier service for the found product.</p>
+
+        <form class="courier-form">
+            <label for="senderName">Your Name</label>
+            <input type="text" id="senderName" name="senderName" required>
+
+            <label for="senderEmail">Your Email</label>
+            <input type="email" id="senderEmail" name="senderEmail" required>
+
+            <label for="receiverName">Receiver's Name</label>
+            <input type="text" id="receiverName" name="receiverName" required>
+
+            <label for="receiverAddress">Receiver's Address</label>
+            <textarea id="receiverAddress" name="receiverAddress" rows="4" required></textarea>
+
+            <label for="productDescription">Product Description</label>
+            <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+
+            <label for="deliveryOption">Delivery Option</label>
+            <select id="deliveryOption" name="deliveryOption" required>
+                <option value="">Select an option</option>
+                <option value="Standard Delivery">Standard Delivery</option>
+                <option value="Express Delivery">Express Delivery</option>
+            </select>
+
+            <button type class="courier-form" method="POST" action="{{ url_for('submit_courier') }}">Submit</button>
+
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Lost&amp;found. All rights reserved.</p>
+    </footer>
+</body>
+</html>

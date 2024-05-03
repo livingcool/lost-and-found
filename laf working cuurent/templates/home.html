@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost&amp;found - Home</title>
+    <style>
+        body {
+            background-color: lavender;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: indigo;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .top-right-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .top-right-buttons a {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 8px 12px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .top-right-buttons a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .feature {
+            width: 30%;
+            margin: 20px;
+            text-align: center;
+            padding: 30px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature h2 {
+            color: indigo;
+            margin-bottom: 20px;
+        }
+
+        .feature p {
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .instructions {
+            background-color: #f5f5f5;
+            padding: 30px;
+            margin-top: 50px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            padding: 10px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-right-buttons">
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    </div>
+
+    <h1 class="display-4">Reunite</h1>
+
+    <div class="logo">
+        <img src="logo.png" alt="Lost&amp;found Logo">
+    </div>
+
+    <div class="content">
+        <h2>Welcome to Reunite</h2>
+        <p>Reunite is a community-driven platform dedicated to reuniting lost items with their owners. Whether you've lost something valuable or found an item that belongs to someone else, we are here to help.</p>
+        <p>Our platform offers the following features:</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h2>Chat with Users</h2>
+                <p>Connect with other community members, share information about lost or found items, and coordinate reunions through our built-in chat feature.</p>
+            </div>
+
+            <div class="feature">
+                <h2>Filtered Search</h2>
+                <p>Easily search for lost or found items based on various criteria such as location, category, and description, making it simple to locate what you're looking for.</p>
+            </div>
+
+            <div class="feature">
+                <h2>Courier Services</h2>
+                <p>Arrange secure courier services to return lost items to their rightful owners, ensuring a safe and reliable way to reunite lost belongings.</p>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h2>How it Works</h2>
+        <ol>
+            <li>Create an account by clicking on the "Register" button at the top right corner of the page.</li>
+            <li>Login to your account using your credentials.</li>
+            <li>If you've lost an item, create a lost item report and provide relevant details.</li>
+            <li>If you've found an item, create a found item report and provide information about the found item.</li>
+            <li>Use the search feature to look for lost or found items that match your criteria.</li>
+            <li>Initiate a chat with the user who posted the report to arrange for item retrieval or return.</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Reunite. All rights reserved.</p>
+    </footer>
+</body>
+</html>
